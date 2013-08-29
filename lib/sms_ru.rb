@@ -13,7 +13,7 @@ module SmsRu
     def send(params)
       query_params = ""
       params.each do |key, value|
-        query_params += "&#{key.to_s}=#{URI::encode(value.to_s)}"
+        query_params += "&#{key.to_s}=#{CGI.escape(value.to_s)}"
       end
       if @api_id.nil?
         require 'digest/sha2'
