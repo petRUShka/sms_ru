@@ -10,7 +10,7 @@ module SmsRu
       @auth_token_expire = nil
     end
 
-    def send(params)
+    def send_sms(params)
       query_params = ""
       params.each do |key, value|
         query_params += "&#{key.to_s}=#{CGI.escape(value.to_s)}"
