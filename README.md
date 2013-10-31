@@ -37,7 +37,7 @@ where *12345689* - receipient of sms
 ### Usage in source code
 
     sms = SmsRu::SMS.new(:api_id => "aaaaaaaaaa-bbbb-ccccc-ddddddd")
-    sms.send(:to => "123123123", :from => "321321321", :text => "Hello world")
+    sms.send_sms(:to => "123123123", :from => "321321321", :text => "Hello world")
 
 ## Contributing
 
