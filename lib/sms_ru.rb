@@ -8,9 +8,11 @@ module SmsRu
       @login = params[:login]
       @password = params[:password]
       @auth_token_expire = nil
+      @from = params[:from]
     end
 
     def send_sms(params)
+      params[:from] ||= @from
       query_params = ""
       params.each do |key, value|
         query_params += "&#{key.to_s}=#{CGI.escape(value.to_s)}"
