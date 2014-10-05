@@ -11,12 +11,13 @@ module SmsRu
       @from = params[:from]
     end
 
-    def send_sms(params)
+    def send_sms(params = {})
       params[:from] ||= @from
-      query_params = ""
-      params.each do |key, value|
-        query_params += "&#{key.to_s}=#{CGI.escape(value.to_s)}"
-      end
+
+      query_params = params.map do |key, value|
+        "&#{key.to_s}=#{CGI.escape(value.to_s.to_str)}"
+      end.join('')
+
       if @api_id.nil?
         require 'digest/sha2'
         hash = Digest::SHA512.hexdigest(@password+auth_token+@api_id)
