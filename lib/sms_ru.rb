@@ -22,7 +22,7 @@ module SmsRu
       else
         uri = URI.parse("http://sms.ru/sms/send?api_id=#@api_id#{query_params}")
         response = Net::HTTP.get_response(uri)
-        response.body.split("\n").first
+        return response.body.split("\n")
       end
     end
 
